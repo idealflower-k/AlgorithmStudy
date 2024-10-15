@@ -21,11 +21,9 @@ class Solution {
                 list.add(cnt);
                 cnt = 1;
             }
-            if (i == progresses.length - 1) {
-                list.add(cnt);
-            }
             preCost = Math.max(cost, preCost);
         }
+        list.add(cnt);
         
         answer = new int[list.size()];
         for (int i = 0; i < list.size(); i++) {
