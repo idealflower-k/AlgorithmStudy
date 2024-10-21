@@ -8,12 +8,7 @@ class Solution {
             strings[i] = String.valueOf(numbers[i]);
         }
         
-        Arrays.sort(strings, new Comparator<String>() {
-            @Override
-            public int compare(String a, String b) {
-                return (b + a).compareTo(a + b);
-            }
-        });
+        Arrays.sort(strings, (a, b) -> (b + a).compareTo(a + b));
         
         StringBuilder sb = new StringBuilder();
         
