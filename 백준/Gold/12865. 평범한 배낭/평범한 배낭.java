@@ -5,7 +5,7 @@ public class Main {
     
     static int[] weight;
     static int[] value;
-    static int[][] dp;
+    static int[] dp;
     
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -15,7 +15,7 @@ public class Main {
         int K = Integer.parseInt(token.nextToken());
         weight = new int[N + 1];
         value = new int[N + 1];
-        dp = new int[N + 1][K + 1];
+        dp = new int[K + 1];
         
         for (int i = 1; i <= N; ++i) {
             token = new StringTokenizer(br.readLine());
@@ -24,13 +24,10 @@ public class Main {
         }
         
         for (int i = 1; i <= N; ++i) {
-            for (int j = 0; j <= K; ++j) {
-                dp[i][j] = dp[i - 1][j];
-                if (j - weight[i] >= 0) {
-                    dp[i][j] = Math.max(dp[i][j], dp[i - 1][j - weight[i]] + value[i]);
-                }
+            for (int j = K; j >= weight[i]; --j) {
+                dp[j] = Math.max(dp[j], dp[j - weight[i]] + value[i]);
             }
         }
-        System.out.print(dp[N][K]);
+        System.out.print(dp[K]);
     }
 }
