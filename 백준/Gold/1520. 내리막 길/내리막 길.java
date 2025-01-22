@@ -71,12 +71,3 @@ public class Main {
         return map[r1][c1] > map[r2][c2];
     }
 }
-
-
-
-
-
-
-
-
-
