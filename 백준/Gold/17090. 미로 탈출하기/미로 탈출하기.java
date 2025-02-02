@@ -6,7 +6,6 @@ public class Main {
     static int N;
     static int M;
     static char[][] map;
-    static boolean[][] visited;
     static int[][] dp;
     static int[] U = {-1, 0};
     static int[] R = {0, 1};
@@ -22,7 +21,6 @@ public class Main {
         
         map = new char[N][M];
         dp = new int[N][M];
-        visited = new boolean[N][M];
         
         for (int i = 0; i < N; ++i) {
             String line = br.readLine();
@@ -36,9 +34,6 @@ public class Main {
         for (int i = 0; i < N; ++i) {
             for (int j = 0; j < M; ++j) {
                 if (dp[i][j] == -1) {
-                    for (boolean[] arr : visited) {
-                        Arrays.fill(arr, false);
-                    }
                     dp[i][j] = dfs(i, j);
                 }
             }
@@ -59,8 +54,6 @@ public class Main {
         if (dp[r][c] != -1) {
             return dp[r][c];
         }
-        
-        visited[r][c] = true;
         
         char curr = map[r][c];
         int nr = r;
@@ -84,9 +77,7 @@ public class Main {
             return 1;
         } else {
             dp[r][c] = 0;
-            if (!visited[nr][nc]) {
-                dp[r][c] = dfs(nr, nc);
-            }
+            dp[r][c] = dfs(nr, nc);
         }
         return dp[r][c];
     }
