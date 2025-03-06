@@ -41,7 +41,6 @@ public class Main {
                 int dist = Integer.parseInt(token.nextToken());
                 
                 graph.offer(new Edge(from, to, dist));
-                graph.offer(new Edge(to, from, dist));
                 total += dist;
             }
             
