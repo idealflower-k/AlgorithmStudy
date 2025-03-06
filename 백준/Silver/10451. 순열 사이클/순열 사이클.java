@@ -24,24 +24,19 @@ public class Main {
                 if (visited[i]) {
                     continue;
                 }
-                if (dfs(i, arr[i], arr, visited)) {
-                    cnt++;
-                }
+                dfs(i, arr, visited);
+                cnt++;
             }
             System.out.println(cnt);
         }
     }
     
-    private static boolean dfs(int start, int cur, int[] arr, boolean[] visited) {
-        if (cur == start) {
-            return true;
-        }
+    private static void dfs(int node, int[] arr, boolean[] visited) {
+        visited[node] = true;
+        int next = arr[node];
         
-        if (!visited[cur]) {
-            visited[cur] = true;
-            return dfs(start, arr[cur], arr, visited);
+        if (!visited[next]) {
+            dfs(next, arr, visited);
         }
-        
-        return false;
     }
 }
